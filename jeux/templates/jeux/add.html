@@ -1,9 +1,10 @@
 {% extends "jeux/base.html" %}
+{% load static %}
 {% block content %}
 <h2>Add personne</h2>
 <form method='post'>
     {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" value="Save">
+    <input type="submit" class ="btn btn-outline-primary" value="Save">
 </form>
 {% endblock content %}
