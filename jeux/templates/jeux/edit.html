@@ -1,6 +1,6 @@
 {% load static %}
 {% block content %}
-    <form method='post' action="{% url 'jeux:edit' form.instance.id %}">
+    <form method='post' class="create-pers-js" action="{% url 'jeux:edit' form.instance.id %}">
         {% csrf_token %}
         <div class="modal-header">
             <h4 class="modal-title">Modal Heading</h4>

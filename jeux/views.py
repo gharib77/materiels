@@ -9,7 +9,7 @@ def index(request):
     personnes=Personne.objects.all()
     return render(request,'jeux/index.html',{'personnes':personnes})
 def add(request):
-    data={}
+    data=dict()
     form = FormPers(request.POST or None)
     if form.is_valid():
         form.save()
@@ -34,14 +34,21 @@ def addgenre(request):
     return render(request,'jeux/addgenre.html',{'form':form})
 
 def edit(request,id):
+    data=dict()
     personne = get_object_or_404(Personne,id=id)
     form = FormPers(request.POST or None,instance=personne)
     if form.is_valid():
         form.save()
-        return redirect('jeux:index')
+        data['form_is_valid'] = True
+        personnes = Personne.objects.all()
+        data['html_Pers_list'] = render_to_string('jeux/listepers.html', {
+                'personnes': personnes})
+    
+    else:
+        data['form_is_valid'] = False
     context = {'form': form}
-    html_form = render_to_string('jeux/edit.html',
+    data['html_form'] = render_to_string('jeux/edit.html',
         context,
         request=request,
     )
-    return JsonResponse({'html_form': html_form})
+    return JsonResponse(data)
