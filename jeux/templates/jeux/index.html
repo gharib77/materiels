@@ -5,16 +5,44 @@
         <thead>
             <th>Nom</th>
             <th>Prenom</th>
+            <th>Genre</th>
             <th>Date</th>
+            <th>Actions</th>
         </thead>
         <tbody>
             {% for personne in personnes %}
                 <tr>
                     <td>{{personne.nom}}</td>
                     <td>{{personne.prenom}}</td>
+                    <td>{{personne.genre}}</td>
                     <td>{{personne.date_entr|date:'d/m/Y'}}</td>
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">      Open modal</button></td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+    <!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Modal body..
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 {% endblock content %}
