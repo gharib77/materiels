@@ -1,5 +1,5 @@
 from django import forms
-from jeux.models import Personne
+from jeux.models import Personne,Genre
 
 class FormPers(forms.ModelForm):
     date_entr = forms.DateField(
@@ -8,4 +8,9 @@ class FormPers(forms.ModelForm):
     )
     class Meta:
         model=Personne
+        fields = '__all__'
+
+class FormGenre(forms.ModelForm):
+    class Meta:
+        model=Genre
         fields = '__all__'
