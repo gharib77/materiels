@@ -1,7 +1,9 @@
 {% extends "jeux/base.html" %}
+{% load static %}
 {% block content %}
     <h2>liste du personnel</h2>
-    <table class ="table table-bordered table-stripped table-sm">
+    <button type="button" data-url="{% url 'jeux:add'%}" class="btn btn-primary edit-js">Add</button>
+    <table id ="personnes" class ="table table-bordered table-stripped table-sm">
         <thead>
             <th>Nom</th>
             <th>Prenom</th>
@@ -10,39 +12,17 @@
             <th>Actions</th>
         </thead>
         <tbody>
-            {% for personne in personnes %}
-                <tr>
-                    <td>{{personne.nom}}</td>
-                    <td>{{personne.prenom}}</td>
-                    <td>{{personne.genre}}</td>
-                    <td>{{personne.date_entr|date:'d/m/Y'}}</td>
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">      Open modal</button></td>
-                </tr>
-            {% endfor %}
+        {% include 'jeux/listepers.html'%} 
         </tbody>
     </table>
-    <!-- The Modal -->
-<div class="modal" id="myModal">
+<!-- The Modal -->
+<div class="modal" id="modalpers">
   <div class="modal-dialog">
     <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        Modal body..
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      </div>
-
     </div>
   </div>
 </div>
 {% endblock content %}
+{% block javascript %}
+<script src="{% static 'jeux/js/myjs.js'%}"></script>
+{% endblock javascript %}

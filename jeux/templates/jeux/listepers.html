@@ -1,0 +1,11 @@
+            {% for personne in personnes %}
+                <tr>
+                    <td>{{personne.nom}}</td>
+                    <td>{{personne.prenom}}</td>
+                    <td>{{personne.genre}}</td>
+                    <td>{{personne.date_entr|date:'d/m/Y'}}</td>
+                    <td>
+                         <button type="button" data-url="{%          url 'jeux:edit' personne.id %}" class="btn btn-primary edit-js">EDIT</button>
+                    </td>
+                </tr>
+            {% endfor %}

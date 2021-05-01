@@ -8,9 +8,6 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'jeux/bootstrap/css/bootstrap.css' %}">
-         <script src="{% static 'jeux/js/jquery-3.3.1.min.js' %}"></script>
-        <script src="{% static 'jeux/bootstrap/js/bootstrap.js' %}"></script>
-
     </head>
     <body>
         <h2>page principale</h2>
@@ -20,5 +17,11 @@
             {% block content %}
             {% endblock content %}
         </div>
+
+        <script src="{% static 'jeux/js/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'jeux/bootstrap/js/bootstrap.js' %}"></script>
+        {% block javascript %}{% endblock javascript %}
+        
+
     </body>
 </html>
