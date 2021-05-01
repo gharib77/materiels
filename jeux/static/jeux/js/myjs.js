@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $(document).on("click", ".edit-js", function () {
+    $(document).on("click", ".show-form-js", function () {
         var btn = $(this);
         $.ajax({
             url: btn.attr('data-url'),

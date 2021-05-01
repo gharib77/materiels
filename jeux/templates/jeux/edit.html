@@ -1,5 +1,3 @@
-{% load static %}
-{% block content %}
     <form method='post' class="create-pers-js" action="{% url 'jeux:edit' form.instance.id %}">
         {% csrf_token %}
         <div class="modal-header">
@@ -14,4 +12,4 @@
         <button type="submit" class="btn btn-primary">Create Personne</button>      
         </div>
     </form>
-{% endblock content %}
+
