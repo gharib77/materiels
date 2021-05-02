@@ -2,6 +2,23 @@
 {% load static %}
 {% block content %}
     <h2>liste du personnel</h2>
+      <form method="get">
+            <div class="form-group row">
+                <div class="col-md-4">
+                    {{ filter.form.nom}}
+                </div>
+                <div class="col-md-4">
+                    {{ filter.form.prenom}}
+                </div>
+                <div class="col-md-4">
+                    {{ filter.form.genre}}
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <button type='submit' class='btn btn-secondary'>Search</button> 
+            </div>
+        </form>
+
     <button type="button" data-url="{% url 'jeux:add'%}" class="btn btn-primary show-form-js">Add</button>
     <table id ="personnes" class ="table table-bordered table-stripped table-sm">
         <thead>

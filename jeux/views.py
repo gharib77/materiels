@@ -4,10 +4,12 @@ from jeux.forms import FormPers,FormGenre
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+from jeux.filters import FpersFilter
 # Create your views here.
 def index(request):
     personnes=Personne.objects.all()
-    return render(request,'jeux/index.html',{'personnes':personnes})
+    filter = FpersFilter(request.GET, queryset=personnes)
+    return render(request,'jeux/index.html',{'filter':filter})
 def add(request):
     data=dict()
     form = FormPers(request.POST or None)
