@@ -17,8 +17,9 @@ def add(request):
         form.save()
         data['form_is_valid'] = True
         personnes = Personne.objects.all()
+        filter = FpersFilter(request.GET, queryset=personnes)
         data['html_Pers_list'] = render_to_string('jeux/listepers.html', {
-                'personnes': personnes})
+                'filter': filter})
     
     else:
         data['form_is_valid'] = False
@@ -43,8 +44,9 @@ def edit(request,id):
         form.save()
         data['form_is_valid'] = True
         personnes = Personne.objects.all()
+        filter = FpersFilter(request.GET, queryset=personnes)
         data['html_Pers_list'] = render_to_string('jeux/listepers.html', {
-                'personnes': personnes})
+                'filter': filter})
     
     else:
         data['form_is_valid'] = False
