@@ -6,6 +6,12 @@ from django.http import JsonResponse
 from django.template.loader import render_to_string
 from jeux.filters import FpersFilter
 # Create your views here.
+def add1(request):
+    form=FormPers(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('jeux:add1')
+    return render(request,'jeux/add1.html',{'form':form})
 def index(request):
     personnes=Personne.objects.all()
     filter = FpersFilter(request.GET, queryset=personnes)
@@ -20,7 +26,6 @@ def add(request):
         filter = FpersFilter(request.GET, queryset=personnes)
         data['html_Pers_list'] = render_to_string('jeux/listepers.html', {
                 'filter': filter})
-    
     else:
         data['form_is_valid'] = False
     context = {'form': form}

@@ -1,11 +1,10 @@
+{% extends "jeux/base.html" %}
 {% load crispy_forms_tags %}
-<form method='post' novalidate class="create-pers-js" action="{% url 'jeux:add' %}">
+{% load static %}
+{% block content %}
+
+<form method='post' novalidate>
     {% csrf_token %}
-    <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-    </div>
-    <div class="modal-body">
         <div class="form-row">
             <div class="form-group col-md-6 mb-0">
                 {{ form.nom|as_crispy_field }}
@@ -22,10 +21,9 @@
                 {{ form.genre|as_crispy_field }}
             </div>
         </div>
-    </div>
-    <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     <button type="submit" class="btn btn-primary">SavePersonne</button>      
-    </div>
 </form>
 
+
+
+{% endblock content %}
